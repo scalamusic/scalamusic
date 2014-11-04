@@ -1,6 +1,9 @@
 package com.openvision.music.composer
 
+import com.openvision.music.output.lilypond.Lilypond
 import com.openvision.music.score._
+
+import com.openvision.music.output.ScoreRenderer.lilypond
 
 object Main extends App {
 
@@ -12,6 +15,9 @@ object Main extends App {
     ))
   ))
 
-  score.play()
+  //score.play()
+
+  //Lilypond.write(score, "test")
+  score.show()
 
 }

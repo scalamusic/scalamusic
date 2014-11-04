@@ -1,6 +1,10 @@
 package com.openvision.music.score
 
+import java.io.File
+
+import com.openvision.music.output.ScoreRenderer
 import com.openvision.music.score.Midi.TicksPerQuarter
+import com.openvision.music.output.Format
 import de.sciss.midi.{TickRate, Sequence, Sequencer}
 
 case class Score(voices: List[Voice]) {
@@ -21,5 +25,11 @@ case class Score(voices: List[Voice]) {
       Thread.sleep((sq.duration * 1000).toLong)
       sequencer.close()
   }
+
+  def write(target: File, format: Format)(implicit renderer: ScoreRenderer) = renderer.write(this, target, format)
+
+  def write(target: String, format: Format = Format.Pdf)(implicit renderer: ScoreRenderer) = renderer.write(this, target, format)
+
+  def show(format: Format = Format.Pdf)(implicit renderer: ScoreRenderer) = renderer.show(this, format)
 
 }
