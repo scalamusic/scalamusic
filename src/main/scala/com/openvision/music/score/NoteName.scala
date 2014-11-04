@@ -1,11 +1,11 @@
 package com.openvision.music.score
 
-sealed class NoteName(pitch: Integer)
+sealed class NoteName(val pitch: Integer)
 
-case class C() extends NoteName(0)
-case class D() extends NoteName(2)
-case class E() extends NoteName(4)
-case class F() extends NoteName(5)
-case class G() extends NoteName(7)
-case class A() extends NoteName(9)
-case class B() extends NoteName(11)
+object C extends NoteName(0)
+object D extends NoteName(2)
+object E extends NoteName(4)
+object F extends NoteName(5)
+object G extends NoteName(7)
+object A extends NoteName(9)
+object B extends NoteName(11)
