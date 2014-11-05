@@ -59,7 +59,7 @@ object Lilypond extends ScoreRenderer {
   }
 
   private def render(elem: VoiceElement)(implicit out: Writer): Unit = elem match {
-    case Note(name, octave, duration) =>
+    case Note(Pitch(name, octave), duration) =>
       renderNoteName(name)
       renderOctave(octave)
       renderDuration(duration)
