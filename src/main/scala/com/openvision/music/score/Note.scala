@@ -9,4 +9,6 @@ case class Note(pitch: Pitch, override val duration: Duration) extends VoiceElem
     Event(tick, NoteOn(0, pitch.toMidi, 80)) :: Event(tick + midiTickLength, NoteOff(0, pitch.toMidi, 0)) :: Nil
   }
 
+  override def toString = s"$pitch$duration"
+
 }

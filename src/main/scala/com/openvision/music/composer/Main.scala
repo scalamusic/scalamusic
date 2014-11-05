@@ -2,6 +2,7 @@ package com.openvision.music.composer
 
 import java.io.OutputStreamWriter
 
+import com.openvision.music.composer.computation.{Configuration, ChordIterator}
 import com.openvision.music.output.lilypond.Lilypond
 import com.openvision.music.score._
 
@@ -44,4 +45,7 @@ object Main extends App {
 
   score.show()
   score.play()
+
+
+
 }
