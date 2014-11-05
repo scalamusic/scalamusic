@@ -40,7 +40,7 @@ object Main extends App {
     Chord(C.major, Duration(1, 2))
   ))
 
-  Lilypond.renderScore(score, new OutputStreamWriter(System.out))
+  Lilypond.renderScore(score, System.out)
 
   score.show()
   score.play()
