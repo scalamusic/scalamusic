@@ -11,14 +11,14 @@ case class NoteName(val index: Integer, val accidentals: Int) {
   def +(i: Interval) = NoteName((index + i.base) % 7, accidentals + i.modifier)
   def -(i: Interval) = NoteName((index - i.base) % 7, accidentals - i.modifier)
 
-  override def toString = {
+  override def toString: String = {
     val accStr = if (accidentals > 0)
         "is" * accidentals
       else if (accidentals < 0)
         "es" * -accidentals
       else
         ""
-    symbol + accStr
+    NoteName.symbols(index) + accStr
   }
 
 }

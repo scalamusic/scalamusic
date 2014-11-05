@@ -80,11 +80,13 @@ object Lilypond extends ScoreRenderer {
     out.write(" }")
   }
 
-  def renderStaff(key: Key, staff: Staff, out: Writer): Unit = {
+  def renderStaff(score: Score, staff: Staff, withChords: Boolean, out: Writer): Unit = {
     out.write("<<\n")
-    renderKey(key, out)
+    renderKey(score.key, out)
     renderTimeSignature(staff.timeSignature, out)
     renderClef(staff.clef, out)
+    if (withChords)
+      renderChords(score.chords, out)
     staff.voices.dropRight(1).foreach { v =>
       renderVoice(v, out)
       out.write(" \\\\ \n")
@@ -93,10 +95,22 @@ object Lilypond extends ScoreRenderer {
     out.write("\n>>\n")
   }
 
-  def renderScore(score: Score, out: Writer): Unit = {
-    score.staves.foreach { s =>
-      renderStaff(score.key, s, out)
+  def renderChords(chords: List[Chord], out: Writer): Unit = {
+    out.write("\\chords {")
+    chords.foreach { c =>
+      out.write(" ")
+      renderNoteName(c.symbol.root, out)
+      renderDuration(c.duration, out)
+      out.write(":" + c.symbol.suffix)
     }
+    out.write("\\ }")
+  }
+
+  def renderScore(score: Score, out: Writer): Unit = {
+    score.staves.dropRight(1).foreach { s =>
+      renderStaff(score, s, false, out)
+    }
+    renderStaff(score, score.staves.last, true, out)
     out.close()
   }
 

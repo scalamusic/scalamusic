@@ -7,7 +7,7 @@ import com.openvision.music.score.Midi.TicksPerQuarter
 import com.openvision.music.output.Format
 import de.sciss.midi.{TickRate, Sequence, Sequencer}
 
-case class Score(key: Key, staves: List[Staff]) {
+case class Score(key: Key, staves: List[Staff], chords: List[Chord]) {
 
   def voices = staves.flatMap(_.voices)
 
