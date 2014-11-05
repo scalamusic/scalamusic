@@ -8,7 +8,7 @@ case class NoteName(val symbol: String, val basePitch: Integer, val accidentals:
 
   def es = NoteName(symbol, basePitch, accidentals - 1)
 
-  def :# = is
+  def + = is
 
   def b = es
 
