@@ -7,7 +7,9 @@ import com.openvision.music.score.Midi.TicksPerQuarter
 import com.openvision.music.output.Format
 import de.sciss.midi.{TickRate, Sequence, Sequencer}
 
-case class Score(voices: List[Voice]) {
+case class Score(key: Key, staves: List[Staff]) {
+
+  def voices = staves.flatMap(_.voices)
 
   def toMidi(tempo: Int) = {
     implicit val tpq: TicksPerQuarter = Midi.DefaultTicksPerQuarter
