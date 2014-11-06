@@ -10,6 +10,12 @@ case class Pitch(name: NoteName, octave: Int) extends Ordered[Pitch] {
 
   def -(i: Interval) = Pitch.fromMidi((name.index - i.base) % 7, toMidi - i.halfTones)
 
+  def -(p: Pitch) = {
+    val base = Math.abs(name.index - p.name.index)
+    val diff = Math.abs(toMidi - p.toMidi)
+    Interval(base, diff - Interval.halfTones(base))
+  }
+
   override def toString = {
     val octStr = if (octave > 0) {
       "'"*octave
