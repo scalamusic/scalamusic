@@ -32,7 +32,6 @@ class ChordIterator(symbol: ChordSymbol, configuration: List[Configuration], inv
     val name = nextName(voiceIndex, i)
     val nextOctave = if (name.index >= n.pitch.name.index) n.pitch.octave - 1 else n.pitch.octave
     val nextPitch = Pitch(name, nextOctave)
-    Console.println(s"next($voiceIndex, ${n.pitch}) = $nextPitch")
     Note(nextPitch, n.duration)
   }
 

@@ -8,8 +8,8 @@ case class NoteName(val index: Integer, val accidentals: Int) {
 
   def es = NoteName(index, accidentals - 1)
 
-  def +(i: Interval) = NoteName((index + i.base) % 7, accidentals + i.modifier)
-  def -(i: Interval) = NoteName((index - i.base) % 7, accidentals - i.modifier)
+  def +(i: Interval) = (Pitch(this, 0) + i).name
+  def -(i: Interval) = (Pitch(this, 0) - i).name
 
   def ^(octave: Int) = Pitch(this, octave)
 

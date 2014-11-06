@@ -11,10 +11,6 @@ case class ChordSymbol(suffix: String, inversion: Int, notes: List[NoteName]) {
 
   def invert(num: Int) = ChordSymbol(suffix, (inversion + 1) % notes.size, notes)
 
-//  def enumerate = generator[List[Note]] { produce =>
-//
-//  }
-
 }
 
 object ChordSymbol {

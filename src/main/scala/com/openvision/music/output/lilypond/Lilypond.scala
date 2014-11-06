@@ -10,6 +10,10 @@ import com.openvision.music.score.{VoiceElement, Score}
 
 object Lilypond extends ScoreRenderer {
 
+  val logger = ProcessLogger(
+    (o: String) => (),
+    (e: String) => ())
+
   private def renderNoteName(name: NoteName)(implicit out: Writer) = {
     out.write(name.toString)
   }
@@ -135,7 +139,7 @@ object Lilypond extends ScoreRenderer {
 
     val process = Seq("lilypond", s"--${format.extension}", "-o", target.getAbsolutePath, tmpFile.getAbsolutePath)
 
-    process.!
+    process ! logger
 
     ()
   }

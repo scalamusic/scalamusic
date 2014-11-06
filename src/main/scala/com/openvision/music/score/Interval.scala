@@ -1,8 +1,14 @@
 package com.openvision.music.score
 
-case class Interval(base: Int, modifier: Int)
+case class Interval(base: Int, modifier: Int) {
+
+  val halfTones = Interval.halfTones(base) + modifier
+
+}
 
 object Interval {
+
+  val halfTones = List(0, 2, 4, 5, 7, 9, 11)
 
   def perfect(base: Int) = Interval(base - 1, 0)
   def major(base: Int) = Interval(base - 1, 0)
