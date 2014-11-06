@@ -1,11 +1,8 @@
 package com.openvision.music.composer
 
 import com.openvision.music.composer.computation.{Configuration, ChordIterator}
-import com.openvision.music.input.Parser
 import com.openvision.music.input.Parser._
-import com.openvision.music.output.lilypond.Lilypond
 import com.openvision.music.score._
-import ChordSymbol._
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -13,7 +10,7 @@ object ChordEnumerator extends App {
 
   def showChord(chord: ChordSymbol) = {
 
-    Console.println("CHORD: " + chord)
+    Console.println("Processing: " + chord)
 
     val it = new ChordIterator(chord, Configuration(Note(chord.root^2, Duration(1, 2))))
 
@@ -37,7 +34,6 @@ object ChordEnumerator extends App {
       ))), Nil)
 
     score.show()
-    //score.play()
   }
 
   val chord = parse(phrase(chordSymbol), args(0))

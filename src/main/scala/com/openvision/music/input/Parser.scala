@@ -13,7 +13,7 @@ object Parser extends RegexParsers {
     (symbolIndex, isMinor)
   }
 
-  def accidentals: Parser[Int] = "((:?b*)|(:?\\#*))".r ^^ { s =>
+  def accidentals: Parser[Int] = "[b|#]*".r ^^ { s =>
     s match {
       case _ if (s.isEmpty) => 0
       case _ if (s.charAt(0) == '#') => s.length

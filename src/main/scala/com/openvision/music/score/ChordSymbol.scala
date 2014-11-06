@@ -11,6 +11,8 @@ case class ChordSymbol(suffix: String, inversion: Int, notes: List[NoteName]) {
 
   def invert(num: Int) = ChordSymbol(suffix, (inversion + 1) % notes.size, notes)
 
+  override def toString = notes.mkString("(", " ", ")") + " / " + root
+
 }
 
 object ChordSymbol {
