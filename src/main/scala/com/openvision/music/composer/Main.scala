@@ -1,8 +1,5 @@
 package com.openvision.music.composer
 
-import java.io.OutputStreamWriter
-
-import com.openvision.music.composer.computation.{Configuration, ChordIterator}
 import com.openvision.music.output.lilypond.Lilypond
 import com.openvision.music.score._
 
