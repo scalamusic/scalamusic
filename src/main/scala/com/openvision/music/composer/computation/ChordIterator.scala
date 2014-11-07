@@ -6,7 +6,7 @@ import com.openvision.music.score.{Pitch, ChordSymbol, Note}
 
 import scala.collection.mutable.ArrayBuffer
 
-class ChordIterator(symbol: ChordSymbol, configuration: List[Configuration], invert: Boolean = false) extends Iterator[List[Note]] {
+case class ChordIterator(symbol: ChordSymbol, configuration: List[Configuration], invert: Boolean = false) extends Iterator[List[Note]] {
 
   private def wrap(i: Int) = {
     if (i < 0) {

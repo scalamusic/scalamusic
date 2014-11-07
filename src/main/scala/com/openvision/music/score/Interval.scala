@@ -11,14 +11,14 @@ object Interval {
 
   val halfTonesList = List(0, 2, 4, 5, 7, 9, 11)
 
-  def halfTones(base: Int) = halfTonesList(base % 8) + 12*(base / 8)
+  def halfTones(base: Int) = halfTonesList(base % 7) + 12*(base / 7)
 
   def perfect(base: Int) = Interval(base - 1, 0)
   def major(base: Int) = Interval(base - 1, 0)
   def minor(base: Int) = Interval(base - 1, -1)
   def augmented(base: Int) = Interval(base - 1, 1)
-  def diminished(base: Int) = ((base - 1) % 8) match {
-    case 0 | 3 | 4 | 7 => Interval(base - 1, -1)
+  def diminished(base: Int) = ((base - 1) % 7) match {
+    case 0 | 3 | 4 => Interval(base - 1, -1)
     case 1 | 2 | 5 | 6 => Interval(base - 1, -2)
   }
 
