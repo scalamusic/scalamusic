@@ -6,6 +6,13 @@ sealed trait Mode {
 
   def scale(name: NoteName): List[NoteName]
 
+  /**
+   * Each entry in the list corresponds to the respective scale note. The list entry denotes the strength of the leading note on
+   * a scale from 0.0 to 1.0.
+   * @return
+   */
+  def leadingNotes: List[Double]
+
 }
 
 
@@ -31,8 +38,11 @@ object Major extends HalfToneMode {
     minor(2),
     major(2),
     major(2),
-    major(2),
-    minor(2)
+    major(2)
+  )
+
+  override val leadingNotes = List(
+    0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0
   )
 
 }
@@ -45,8 +55,11 @@ object Minor extends HalfToneMode {
     major(2),
     major(2),
     minor(2),
-    major(2),
-    major(2)
+    augmented(2) // harmonic minor?
+  )
+
+  override val leadingNotes = List(
+    0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 1.0
   )
 
 }
