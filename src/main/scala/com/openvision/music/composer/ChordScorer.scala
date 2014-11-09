@@ -23,7 +23,7 @@ object ChordScorer extends App {
     val configurationB = Configuration(n2)
     val scorer = PositionScorer + DoublingScorer + VoiceLeadingScorer
 
-    val sorted = (ChordIterator(a, configurationA) zip ChordIterator(b, configurationB)).toList.sortWith { case ((a1, b1), (a2, b2)) =>
+    val sorted = (for (c1 <- ChordIterator(a, configurationA); c2 <- ChordIterator(b, configurationB)) yield (c1, c2)).toList.sortWith { case ((a1, b1), (a2, b2)) =>
       scorer(a1, b1) < scorer(a2, b2)
     }
 

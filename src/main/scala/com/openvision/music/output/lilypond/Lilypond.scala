@@ -139,6 +139,7 @@ object Lilypond extends ScoreRenderer {
 
     val process = Seq("lilypond", s"--${format.extension}", "-o", target.getAbsolutePath, tmpFile.getAbsolutePath)
 
+    Console.println("Executing lilypond...")
     process ! logger
 
     ()

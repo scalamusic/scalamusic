@@ -8,11 +8,11 @@ import scala.collection.mutable.ArrayBuffer
 
 object ChordEnumerator extends App {
 
-  def showChord(chord: ChordSymbol) = {
+  def showChord(note: Note, chord: ChordSymbol) = {
 
     Console.println("Processing: " + chord)
 
-    val it = new ChordIterator(chord, Configuration(Note(chord.root^2, Duration(1, 2))))
+    val it = new ChordIterator(chord, Configuration(note))
 
     val voices = (1 to 4).map { n =>
       ArrayBuffer[Note]()
@@ -36,10 +36,10 @@ object ChordEnumerator extends App {
     score.show()
   }
 
-  val chord = parse(phrase(chordSymbol), args(0))
+  val chord = parse(phrase(note ~ chordSymbol), args.mkString(" "))
 
   chord match {
-    case Success(chord, _) => showChord(chord)
+    case Success(note ~ chord, _) => showChord(note, chord)
     case x: Failure => throw new RuntimeException(x.toString())
     case x: Error => throw new RuntimeException(x.toString())
   }
