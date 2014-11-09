@@ -11,7 +11,7 @@ sealed trait Mode {
    * a scale from 0.0 to 1.0.
    * @return
    */
-  def leadingNotes: List[Double]
+  val leadingNotes: List[Double]
 
 }
 
