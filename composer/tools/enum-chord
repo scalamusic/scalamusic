@@ -1,0 +1,2 @@
+#!/bin/sh
+../target/universal/stage/bin/composer -main net.scalamusic.composer.ChordEnumerator $@

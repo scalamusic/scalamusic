@@ -1,2 +1,0 @@
-#!/bin/sh
-../target/universal/stage/bin/composer -main com.openvision.music.composer.ChordEnumerator $@

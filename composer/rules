@@ -1,0 +1,16 @@
+# parallels:
+parallel fifth: 1000
+parallel octave: 2000
+parallel unison: 2000
+similar fifth: 200
+similar fifth between soprano and bass: 300
+
+# duplication:
+duplicate leading note: 1000
+duplicate 3rd: 100
+duplicate 5th: 10
+
+# position:
+distance(soprano, alto) > sixth: distance(soprano, alto)
+distance(alto, tenor) > sixth: distance(alto, tenor)
+distance(tenor, bass) > twelf 

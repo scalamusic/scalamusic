@@ -1,9 +1,7 @@
-*.class
 *.log
 
 # sbt specific
 .cache/
-.history/
 .lib/
 dist/*
 target/
@@ -18,3 +16,4 @@ project/plugins/project/
 
 # IDEA
 .idea
+**.iml
